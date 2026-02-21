@@ -68,10 +68,20 @@ Then press `F5` in VS Code to launch the Extension Development Host.
 
 ## MCP Client Configuration
 
+After installing the `.vsix`, the MCP server script is located inside the installed extension directory:
+
+```
+~/.vscode/extensions/debugger-mcp.vscode-debugger-mcp-0.1.0/dist/mcp-server.js
+```
+
+> **Note:** On Windows the extensions directory is `%USERPROFILE%\.vscode\extensions\`.
+
+Use this path when configuring your MCP client:
+
 ### Claude Code
 
 ```bash
-claude mcp add vscode-debugger node /path/to/vscode-debugger-mcp/dist/mcp-server.js
+claude mcp add vscode-debugger node ~/.vscode/extensions/debugger-mcp.vscode-debugger-mcp-0.1.0/dist/mcp-server.js
 ```
 
 ### Claude Desktop
@@ -83,7 +93,9 @@ Add to your Claude Desktop config (`~/Library/Application Support/Claude/claude_
   "mcpServers": {
     "vscode-debugger": {
       "command": "node",
-      "args": ["/path/to/vscode-debugger-mcp/dist/mcp-server.js"]
+      "args": [
+        "~/.vscode/extensions/debugger-mcp.vscode-debugger-mcp-0.1.0/dist/mcp-server.js"
+      ]
     }
   }
 }
@@ -98,7 +110,9 @@ Add to `.vscode/mcp.json` in your workspace:
   "servers": {
     "vscode-debugger": {
       "command": "node",
-      "args": ["/path/to/vscode-debugger-mcp/dist/mcp-server.js"]
+      "args": [
+        "~/.vscode/extensions/debugger-mcp.vscode-debugger-mcp-0.1.0/dist/mcp-server.js"
+      ]
     }
   }
 }
